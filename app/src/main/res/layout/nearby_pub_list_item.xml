@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="pub"
+			type="com.example.android.i_mobv_application.model.NearbyPub" />
+
+		<variable
+			name="nearbyPubEventListener"
+			type="com.example.android.i_mobv_application.ui.adapter.NearbyPubEventListener" />
+
+	</data>
+
+	<com.google.android.material.card.MaterialCardView
+		android:id="@+id/card"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="8dp"
+		android:layout_marginVertical="3dp"
+		android:onClick="@{() -> nearbyPubEventListener.onClick(pub)}"
+		app:cardCornerRadius="30dp"
+		app:cardElevation="4dp">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:orientation="horizontal"
+			android:paddingBottom="10dp">
+
+			<ImageView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:contentDescription="@string/pub_icon"
+				app:pubIcon="@{pub.type}"
+				app:tint="@color/red" />
+
+			<TextView
+				android:id="@+id/pub_name"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="6dp"
+				android:gravity="center"
+				android:paddingVertical="10dp"
+				android:text="@{pub.name}"
+				android:textAppearance="?attr/textAppearanceHeadline6"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+
+		</LinearLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="40dp"
+			android:gravity="center"
+			android:orientation="horizontal"
+			android:paddingBottom="15dp">
+
+			<ImageView
+				android:id="@+id/distance_icon"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:contentDescription="@string/distance_from_pub_icon"
+				android:tooltipText="@string/your_distance"
+				app:tint="@color/red" />
+
+			<TextView
+				android:id="@+id/distance"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginStart="6dp"
+				android:gravity="center"
+				android:text="@{@string/distance_m(pub.distance)}"
+				android:textSize="20sp"
+				android:tooltipText="@string/your_distance"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintTop_toTopOf="parent" />
+		</LinearLayout>
+	</com.google.android.material.card.MaterialCardView>
+</layout>
