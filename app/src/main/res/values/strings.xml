@@ -1,0 +1,39 @@
+<resources>
+	<string name="app_name">I-MOBV_Application</string>
+	<string name="show_on_map">Show on Map</string>
+	<string name="call">Call</string>
+	<string name="visit_website">Visit Website</string>
+	<string name="sort_button">Open sorting options</string>
+	<string name="pubs">Pubs</string>
+	<string name="pub_detail">Pub Detail</string>
+	<string name="location">Location</string>
+	<string name="friends">Friends</string>
+	<string name="night_out">Night Out</string>
+	<string name="add_friends_button">Add Friends Button</string>
+	<string name="logout">Logout</string>
+	<string name="username">Username</string>
+	<string name="password">Password</string>
+	<string name="register">Register</string>
+	<string name="log_in">Log in</string>
+	<string name="add_friends">Add Friends</string>
+	<string name="yes_logout">Yes, log out</string>
+	<string name="cancel">Cancel</string>
+	<string name="logout_message">Are you sure you want to log out?</string>
+	<string name="no_account" translatable="false">Don\'t have an account?</string>
+	<string name="have_an_account">Already have an account?</string>
+	<string name="sort_by_distance_icon">Sort By Distance Icon</string>
+	<string name="sort_by_number_of_people_icon">Sort By Number of People Icon</string>
+	<string name="sort_by_name_icon">Sort By Name Icon</string>
+	<string name="number_of_users_icon">Number of Users icon</string>
+	<string name="number_of_users">Number of Users</string>
+	<string name="your_distance">Your distance from Pub</string>
+	<string name="pub_icon">Pub Icon</string>
+	<string name="distance_from_pub_icon">Distance from pub icon</string>
+	<string name="nearest_pub">Nearest Pub</string>
+	<string name="other_pubs_in_your_location">Other Pubs in your Location</string>
+	<string name="distance_km">%.2f km</string>
+	<string name="distance_m">%.2f m</string>
+	<string name="loading_nearby_pubs_n_tplease_stand_by">Loading nearby pubs.\n\tPlease stand by.</string>
+	<string name="add_friend">Add Friend</string>
+	<string name="user_icon">User Icon</string>
+</resources>

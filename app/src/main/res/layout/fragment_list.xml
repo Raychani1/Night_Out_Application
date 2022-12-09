@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:context=".ui.fragment.pubs.ListFragment">
+
+	<data>
+
+		<variable
+			name="pubViewModel"
+			type="com.example.android.i_mobv_application.ui.viewmodels.pubs.PubViewModel" />
+
+
+		<variable
+			name="locationViewModel"
+			type="com.example.android.i_mobv_application.ui.viewmodels.location.LocationViewModel" />
+
+	</data>
+	<!-- Change padding values if card size changes -->
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:paddingVertical="60dp">
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/sort_pubs"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="end|bottom"
+			android:layout_marginEnd="16dp"
+			android:layout_marginBottom="25dp"
+			android:background="@android:color/transparent"
+			android:backgroundTint="?attr/colorSecondary"
+			android:contentDescription="@string/sort_button"
+			android:src="@drawable/ic_baseline_sort_24"
+			android:tooltipText="Sort Pubs"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:rippleColor="@color/black" />
+
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/sort_pubs_by_distance"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:backgroundTint="@color/light_yellow"
+			android:clickable="true"
+			android:contentDescription="@string/sort_by_distance_icon"
+			android:focusable="true"
+			android:tooltipText="Sort Pubs based on distance"
+			android:visibility="invisible"
+			app:layout_constraintBottom_toTopOf="@+id/sort_pubs"
+			app:layout_constraintEnd_toEndOf="@+id/sort_pubs"
+			app:srcCompat="@drawable/ic_baseline_straighten_24" />
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/sort_pubs_by_people"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:backgroundTint="@color/light_yellow"
+			android:clickable="true"
+			android:contentDescription="@string/sort_by_number_of_people_icon"
+			android:focusable="true"
+			android:tooltipText="Sort Pubs based on the number of people in them"
+			android:visibility="invisible"
+			app:layout_constraintBottom_toTopOf="@+id/sort_pubs_by_distance"
+			app:layout_constraintEnd_toEndOf="@+id/sort_pubs_by_distance"
+
+			app:srcCompat="@drawable/ic_baseline_group_24" />
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/sort_pubs_by_name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="16dp"
+			android:backgroundTint="@color/light_yellow"
+			android:clickable="true"
+			android:contentDescription="@string/sort_by_name_icon"
+			android:focusable="true"
+			android:tooltipText="Sort Pubs based on their name in Ascending order"
+			android:visibility="invisible"
+			app:layout_constraintBottom_toTopOf="@+id/sort_pubs_by_people"
+			app:layout_constraintEnd_toEndOf="@+id/sort_pubs_by_people"
+			app:srcCompat="@drawable/ic_baseline_sort_by_alpha_48" />
+
+		<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+			android:id="@+id/refresh"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:layout_marginTop="20dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/toolbar"
+			tools:ignore="NotSibling">
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/recycler_view"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginTop="20dp"
+				android:scrollbars="vertical"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				app:listData="@{pubViewModel.pubs}"
+				tools:listitem="@layout/pub_list_item" />
+
+		</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+		<View
+			showTextToast="@{locationViewModel.message}"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

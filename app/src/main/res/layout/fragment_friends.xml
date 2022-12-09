@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	tools:context=".ui.fragment.friends.FriendsFragment">
+
+	<data>
+
+		<import type="android.view.View" />
+
+		<variable
+			name="friendsViewModel"
+			type="com.example.android.i_mobv_application.ui.viewmodels.friends.FriendsViewModel" />
+	</data>
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+			android:id="@+id/refresh"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			android:paddingTop="60dp"
+			android:paddingBottom="60dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/toolbar"
+			tools:ignore="NotSibling">
+
+			<androidx.recyclerview.widget.RecyclerView
+				android:id="@+id/friends_recycler_view"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_marginTop="20dp"
+				android:scrollbars="vertical"
+				app:friendsData="@{friendsViewModel.friends}"
+				app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+				tools:listitem="@layout/nearby_pub_list_item" />
+
+		</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center_horizontal"
+			android:visibility="@{friendsViewModel.friends.size() == 0 ? View.VISIBLE: View.GONE}"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/refresh"
+			android:layout_marginBottom="350dp">
+
+			<com.airbnb.lottie.LottieAnimationView
+				android:id="@+id/no_friends_found"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:adjustViewBounds="true"
+				android:tooltipText="No Friends Found"
+				app:layout_constraintDimensionRatio="1:1"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintTop_toTopOf="parent"
+				app:lottie_loop="true"
+				app:lottie_speed="0.5"
+				android:paddingBottom="500dp"/>
+		</LinearLayout>
+
+
+		<com.google.android.material.floatingactionbutton.FloatingActionButton
+			android:id="@+id/add_friends"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="end|bottom"
+			android:layout_marginEnd="16dp"
+			android:layout_marginBottom="75dp"
+			android:background="@null"
+			android:backgroundTint="?attr/colorSecondary"
+			android:contentDescription="@string/add_friends_button"
+			android:src="@drawable/ic_baseline_person_add_alt_1_24"
+			android:tooltipText="Add new Friend"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:rippleColor="@color/black" />
+
+		<View
+			showTextToast="@{friendsViewModel.message}"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
